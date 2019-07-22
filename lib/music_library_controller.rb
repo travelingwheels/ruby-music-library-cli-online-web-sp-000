@@ -38,7 +38,15 @@ class MusicLibraryController
  end
  
   def list_songs
-    
+    index = 0
+   songs = Song.all
+   sorted_songs = songs.sort {|song_a,song_b| song_a.name <=> song_b.name}
+   sorted_songs.map {|s| 
+      index += 1
+      puts "#{index}. #{s.artist.name} - #{s.name} - #{s.genre.name}"
+      { :index => "#{s.name} by #{s.artist.name}"}
+   }
+   
   end
 
    def list_artists
