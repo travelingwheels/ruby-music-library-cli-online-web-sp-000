@@ -57,5 +57,63 @@ class MusicLibraryController
       puts "#{index}. #{a.name}"
      }
    end 
-   
+    def list_genres
+   index = 0
+   genres = Genre.all
+   sorted_genres = genres.sort {|a,b| a.name <=> b.name}
+   sorted_genres.each {|g| 
+      index += 1
+      puts "#{index}. #{g.name}"
+   }
+ end
+ 
+ def list_songs_by_artist
+   index = 0
+   puts "Please enter the name of an artist:"
+   input = gets.strip
+   Artist.all.each {|a|
+      if a.name == input
+        sorted = a.songs.sort {|x,y| x.name <=> y.name}
+            sorted.each {|o| 
+            index += 1
+            puts "#{index}. #{o.name} - #{o.genre.name}"}
+      else nil 
+      end
+   }
+ end
+ 
+  def list_songs_by_genre
+   index = 0
+   puts "Please enter the name of a genre:"
+   input = gets.strip
+   Genre.all.each {|a|
+      if a.name == input
+        sorted = a.songs.sort {|x,y| x.name <=> y.name}
+            sorted.each {|o| 
+            index += 1
+            puts "#{index}. #{o.artist.name} - #{o.name}"}
+      else nil 
+      end
+   }
+  end
+  
+  def play_song
+    index = 0
+    list = []
+    songs = Song.all
+    sorted_songs = songs.sort {|song_a,song_b| song_a.name <=> song_b.name}
+      sorted_songs.each {|s| 
+      index += 1
+      list[index] = "#{s.name} by #{s.artist.name}"
+      }
+      
+      puts "Which song number would you like to play?"  
+      input = gets.strip.to_i
+      if input.between?(1,list.size - 1)
+      puts "Playing #{list[input]}"
+      else 
+      nil
+      end
+    #binding.pry
+  end
 end
