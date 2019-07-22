@@ -46,17 +46,10 @@ class MusicLibraryController
       puts "#{index}. #{s.artist.name} - #{s.name} - #{s.genre.name}"
       { :index => "#{s.name} by #{s.artist.name}"}
    }
-   
   end
 
    def list_artists
-     index = 0 
-     artist = Artist.all
-     sorted_art = artist.sort {|a, b| a.name <=> b.name}
-     sorted_art.each {|a|
-     index += 1 
-       puts "#{index}. #{a.name}"
-     }
+     
    end 
 
  
