@@ -57,6 +57,7 @@ class MusicLibraryController
       puts "#{index}. #{a.name}"
      }
    end 
+   
     def list_genres
    index = 0
    genres = Genre.all
