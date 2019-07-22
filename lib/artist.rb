@@ -2,8 +2,7 @@ require 'pry'
 class Artist 
   extend Concerns::Findable
   
-  attr_accessor :name
-  attr_reader :songs
+  attr_accessor :name, :songs
   @@all = []
   
   def initialize(name)
@@ -11,6 +10,7 @@ class Artist
     @@all << self
     @songs = []
   end
+  
   def self.all
     @@all
   end
