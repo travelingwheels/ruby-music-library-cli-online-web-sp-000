@@ -38,9 +38,7 @@ class MusicLibraryController
  end
  
   def list_songs
-    sorted_songs.each_with_index do |song, index|
-      puts "#{index+1}. #{formatted_song(song)}"
-    end
+    
   end
 
    def list_artists
